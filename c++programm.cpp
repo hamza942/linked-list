@@ -9,7 +9,36 @@ class list {
 		node* next;
 	};
 public:
+
 	node* head = NULL;
+	int insert(int v, int ref) {
+		node* ne = new node;
+		ne->data = v;
+		node* temp = head;
+		node* pr = temp;
+		temp = temp->next;
+		if (ref == 0) {
+			ne->next = pr;
+			head = ne;
+			return 0;
+			          
+		}
+		else if (ref < 0) {
+			return 0;
+		}
+		else {
+			int x = 0;
+			while (x < ref - 1) {
+				pr = pr->next;
+				temp = temp->next;
+				x++;
+			}
+			pr->next = ne;
+			ne->next = temp;
+			return 0;
+		}
+     
+	}
 	void append(int val) {
 		node* newnode = new node;
 		newnode->data = val;
@@ -69,6 +98,6 @@ int main() {
 		list.append(g);
 	}
 	list.print();
-	list.remove(2);
+	list.insert(9, 2);
 	list. print();
 }
